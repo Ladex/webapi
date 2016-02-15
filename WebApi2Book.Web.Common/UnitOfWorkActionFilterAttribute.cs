@@ -3,7 +3,7 @@ using System.Web.Http.Filters;
 
 namespace WebApi2Book.Web.Common
 {
-    public class UnitWorkActionFilterAttribute : ActionFilterAttribute
+    public class UnitOfWorkActionFilterAttribute : ActionFilterAttribute
     {
         public virtual IActionTransactionHelper ActionTransactionHelper => WebContainerManager.Get<IActionTransactionHelper>();
 

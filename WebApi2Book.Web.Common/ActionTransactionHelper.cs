@@ -22,10 +22,7 @@ namespace WebApi2Book.Web.Common
             if (!CurrentSessionContext.HasBind(_sessionFactory)) return;
 
             var session = _sessionFactory.GetCurrentSession();
-            if (session != null)
-            {
-                session.BeginTransaction();
-            }
+            session?.BeginTransaction();
         }
 
         public void EndTransaction(HttpActionExecutedContext filterContext)
