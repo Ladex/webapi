@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Web.Configuration;
-using System.Web.Http;
+﻿using System.Web.Http;
 using System.Web.Http.Dispatcher;
 using System.Web.Http.Routing;
+using System.Web.Http.Tracing;
 using Microsoft.Owin.Security.OAuth;
-using Newtonsoft.Json.Serialization;
 using WebApi2Book.Common.Logging;
 using WebApi2Book.Web.Common;
 using WebApi2Book.Web.Common.Routing;

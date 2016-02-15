@@ -39,7 +39,7 @@ namespace WebApi2Book.Web.Api
         {
             var sessionFactory = Fluently.Configure()
                 .Database(
-                    MsSqlConfiguration.MsSql2008.ConnectionString(c => c.FromConnectionStringWithKey("WebApi2BookDb")))
+                    MsSqlConfiguration.MsSql2005.ConnectionString(c => c.FromConnectionStringWithKey("WebApi2BookDb")))
                 .CurrentSessionContext("web")
                 .Mappings(m => m.FluentMappings.AddFromAssemblyOf<TaskMap>())
                 .BuildSessionFactory();
