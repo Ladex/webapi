@@ -32,6 +32,7 @@ namespace WebApi2Book.Web.Common
             {
                 rec.RequestId,
                 Environment.NewLine,
+                rec.Kind,
                 rec.Status,
                 rec.Operation,
                 rec.Operator,
@@ -39,6 +40,7 @@ namespace WebApi2Book.Web.Common
                 rec.Request,
                 rec.Message
             };
+
 
             switch (rec.Level)
             {
