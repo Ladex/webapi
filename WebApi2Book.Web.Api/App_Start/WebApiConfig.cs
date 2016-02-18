@@ -16,10 +16,10 @@ namespace WebApi2Book.Web.Api
     {
         public static void Register(HttpConfiguration config)
         {
-            // Web API configuration and services
-            // Configure Web API to use only bearer token authentication.
-            config.SuppressDefaultHostAuthentication();
-            config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
+//            // Web API configuration and services
+//            // Configure Web API to use only bearer token authentication.
+//            config.SuppressDefaultHostAuthentication();
+//            config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
 
             var constraintsResolver = new DefaultInlineConstraintResolver();
             constraintsResolver.ConstraintMap.Add("apiVersionConstraint", typeof(ApiVersionConstraint));
@@ -28,10 +28,9 @@ namespace WebApi2Book.Web.Api
             config.Services.Replace(typeof(IHttpControllerSelector), new NamespaceHttpControllerSelector(config));
             config.EnableSystemDiagnosticsTracing();
 
-            config.Services.Replace(typeof(ITraceWriter), new SimpleTraceWriter(WebContainerManager.Get<ILogManager>()));
             config.Services.Add(typeof(IExceptionLogger), new SimpleExceptionLogger(WebContainerManager.Get<ILogManager>()));
+            config.Services.Replace(typeof(ITraceWriter), new SimpleTraceWriter(WebContainerManager.Get<ILogManager>()));
             config.Services.Replace(typeof (IExceptionHandler), new GlobalExceptionHandler());
-
         }
 
     }
