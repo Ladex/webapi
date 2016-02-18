@@ -7,6 +7,7 @@ using Microsoft.Owin.Security.OAuth;
 using WebApi2Book.Common.ErrorHandling;
 using WebApi2Book.Common.Logging;
 using WebApi2Book.Web.Common;
+using WebApi2Book.Web.Common.ErrorHandling;
 using WebApi2Book.Web.Common.Routing;
 
 namespace WebApi2Book.Web.Api
@@ -29,6 +30,8 @@ namespace WebApi2Book.Web.Api
 
             config.Services.Replace(typeof(ITraceWriter), new SimpleTraceWriter(WebContainerManager.Get<ILogManager>()));
             config.Services.Add(typeof(IExceptionLogger), new SimpleExceptionLogger(WebContainerManager.Get<ILogManager>()));
+            config.Services.Replace(typeof (IExceptionHandler), new GlobalExceptionHandler());
+
         }
 
     }
