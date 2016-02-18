@@ -8,8 +8,12 @@ using NHibernate;
 using NHibernate.Context;
 using Ninject.Activation;
 using Ninject.Web.Common;
+using WebApi2Book.Common.Security;
+using WebApi2Book.Common.TypeMapping;
+using WebApi2Book.Data.QueryProcessor;
 using WebApi2Book.Web.Common;
 using WebApiBook.Data.SqlServer.Mapping;
+using WebApiBook.Data.SqlServer.QueryProcessor;
 
 namespace WebApi2Book.Web.Api
 {
@@ -22,9 +26,24 @@ namespace WebApi2Book.Web.Api
 
         private static void AddBinding(IKernel container)
         {
+            ConfigureAutoMapper(container);
             ConfigureLog4Net(container);
             ConfigureNHibernate(container);
+            ConfigureUserSession(container);
             container.Bind<IDateTime>().To<DateTImeAdapter>().InSingletonScope();
+            container.Bind<IAddTaskQueryProcessor>().To<AddTaskQueryProcessor>().InRequestScope();
+        }
+
+        private static void ConfigureAutoMapper(IKernel container)
+        {
+            container.Bind<IAutoMapper>().To<AutoMapperAdapter>().InSingletonScope();
+        }
+
+        private static void ConfigureUserSession(IKernel container)
+        {
+            var userSession = new UserSession();
+            container.Bind<IUserSession>().ToConstant(userSession);
+            container.Bind<IWebUserSession>().ToConstant(userSession);
         }
 
         private static void ConfigureLog4Net(IKernel container)
@@ -56,7 +75,6 @@ namespace WebApi2Book.Web.Api
             {
                 var session = sessionFactory.OpenSession();
                 CurrentSessionContext.Bind(session);
-
                 return sessionFactory.GetCurrentSession();
             }
             return sessionFactory.GetCurrentSession();

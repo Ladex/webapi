@@ -46,6 +46,7 @@
     <Compile Include="Entities\User.cs" />
     <Compile Include="Exceptions\RootObjectNotFoundException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueryProcessor\IAddTaskQueryProcessor.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
