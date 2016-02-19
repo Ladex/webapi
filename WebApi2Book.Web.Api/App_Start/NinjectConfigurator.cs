@@ -49,7 +49,6 @@ namespace WebApi2Book.Web.Api
         private static void ConfigureLog4Net(IKernel container)
         {
             XmlConfigurator.Configure();
-
             var logManager = new LogManagerAdapter();
             container.Bind<ILogManager>().ToConstant(logManager);
         }

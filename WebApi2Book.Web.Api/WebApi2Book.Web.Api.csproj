@@ -211,6 +211,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\AutoMapperConfigurator.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -247,7 +248,12 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
-    <Compile Include="AutoMappingConfiguration\NewTaskToTaskEntityAutoMappingConfiguration.cs" />
+    <Compile Include="AutoMappingConfiguration\NewTaskToTaskEntityAutoMappingTypeConfiguration.cs" />
+    <Compile Include="AutoMappingConfiguration\StatusEntityToStatusAutoMapperTypeConfigurator.cs" />
+    <Compile Include="AutoMappingConfiguration\StatusToStatueEntityAutoMapperTypeConfigurator.cs" />
+    <Compile Include="AutoMappingConfiguration\TaskAssigneeResolver.cs" />
+    <Compile Include="AutoMappingConfiguration\TaskEntityToTaskAutoMapperTypeConfigurator.cs" />
+    <Compile Include="AutoMappingConfiguration\UserEntityToUseAutoMapperTypeConfigurator.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\V1\TasksController.cs" />
     <Compile Include="Controllers\V2\TasksController.cs" />

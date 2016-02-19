@@ -1,14 +1,16 @@
-﻿using AutoMapper;
+﻿using System.Drawing.Design;
+using AutoMapper;
 using WebApi2Book.Common.TypeMapping;
 using WebApi2Book.Web.Api.Models;
 
+
 namespace WebApi2Book.Web.Api.AutoMappingConfiguration
 {
-    public class NewTaskToTaskEntityAutoMappingConfiguration : IAutoMapperTypeConfigurator
+    public class NewTaskToTaskEntityAutoMappingTypeConfiguration : IAutoMapperTypeConfigurator
     {
-        public void Configure()
+        public void Configure(IMapperConfiguration mapperConfiguration)
         {
-            Mapper.CreateMap<NewTask, Data.Entities.Task>()
+            mapperConfiguration.CreateMap<NewTask, Data.Entities.Task>()
                 .ForMember(opt => opt.Version, x => x.Ignore())
                 .ForMember(opt => opt.CreatedBy, x => x.Ignore())
                 .ForMember(opt => opt.TaskId, x => x.Ignore())

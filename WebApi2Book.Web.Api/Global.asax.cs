@@ -3,6 +3,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using WebApi2Book.Common.Logging;
+using WebApi2Book.Common.TypeMapping;
 using WebApi2Book.Web.Common;
 
 namespace WebApi2Book.Web.Api
@@ -13,6 +14,10 @@ namespace WebApi2Book.Web.Api
         {
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
+
+            new AutoMapperConfigurator().Configure(
+                WebContainerManager.GetAll<IAutoMapperTypeConfigurator>());
+
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);

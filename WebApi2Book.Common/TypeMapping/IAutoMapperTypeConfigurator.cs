@@ -1,7 +1,9 @@
-﻿namespace WebApi2Book.Common.TypeMapping
+﻿using AutoMapper;
+
+namespace WebApi2Book.Common.TypeMapping
 {
     public interface IAutoMapperTypeConfigurator
     {
-        void Configure();
+        void Configure(IMapperConfiguration mapperConfiguration);
     }
 }
