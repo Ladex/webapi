@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 namespace WebApi2Book.Web.Api.Models
 {
-    public class Task
+    public class Task:ILinkContaining
     {
         private List<Link> _links;
 
@@ -21,9 +21,10 @@ namespace WebApi2Book.Web.Api.Models
             set { _links = value; }
         }
 
-        public void AddLinks(Link link)
+        public void AddLink(Link link)
         {
             Links.Add(link);
         }
+        
     }
 }
