@@ -254,12 +254,14 @@
     <Compile Include="AutoMappingConfiguration\TaskAssigneeResolver.cs" />
     <Compile Include="AutoMappingConfiguration\TaskEntityToTaskAutoMapperTypeConfigurator.cs" />
     <Compile Include="AutoMappingConfiguration\UserEntityToUseAutoMapperTypeConfigurator.cs" />
+    <Compile Include="AutoMappingConfiguration\UserToUserEntityAutoMapperTypeConfigurator.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\V1\TasksController.cs" />
     <Compile Include="Controllers\V2\TasksController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="MaintainanceProcessing\IAddTaskMaintenanceProcessing.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />

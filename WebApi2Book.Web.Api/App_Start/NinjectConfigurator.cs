@@ -11,6 +11,8 @@ using Ninject.Web.Common;
 using WebApi2Book.Common.Security;
 using WebApi2Book.Common.TypeMapping;
 using WebApi2Book.Data.QueryProcessor;
+using WebApi2Book.Web.Api.AutoMappingConfiguration;
+using WebApi2Book.Web.Api.MaintainanceProcessing;
 using WebApi2Book.Web.Common;
 using WebApiBook.Data.SqlServer.Mapping;
 using WebApiBook.Data.SqlServer.QueryProcessor;
@@ -32,11 +34,36 @@ namespace WebApi2Book.Web.Api
             ConfigureUserSession(container);
             container.Bind<IDateTime>().To<DateTImeAdapter>().InSingletonScope();
             container.Bind<IAddTaskQueryProcessor>().To<AddTaskQueryProcessor>().InRequestScope();
+            container.Bind<IAddTaskMaintenanceProcessing>().To<AddTaskMaintenanceProcessing>().InRequestScope();
         }
 
         private static void ConfigureAutoMapper(IKernel container)
         {
             container.Bind<IAutoMapper>().To<AutoMapperAdapter>().InSingletonScope();
+
+            container.Bind<IAutoMapperTypeConfigurator>()
+                .To<StatusEntityToStatusAutoMapperTypeConfigurator>()
+                .InSingletonScope();
+
+            container.Bind<IAutoMapperTypeConfigurator>()
+                .To<StatusToStatueEntityAutoMapperTypeConfigurator>()
+                .InSingletonScope();
+
+            container.Bind<IAutoMapperTypeConfigurator>()
+                .To<UserEntityToUseAutoMapperTypeConfigurator>()
+                .InSingletonScope();
+
+            container.Bind<IAutoMapperTypeConfigurator>()
+                .To<UserToUserEntityAutoMapperTypeConfigurator>()
+                .InSingletonScope();
+
+            container.Bind<IAutoMapperTypeConfigurator>()
+                .To<NewTaskToTaskEntityAutoMappingTypeConfiguration>()
+                .InSingletonScope();
+
+            container.Bind<IAutoMapperTypeConfigurator>()
+                .To<TaskEntityToTaskAutoMapperTypeConfigurator>()
+                .InSingletonScope();
         }
 
         private static void ConfigureUserSession(IKernel container)

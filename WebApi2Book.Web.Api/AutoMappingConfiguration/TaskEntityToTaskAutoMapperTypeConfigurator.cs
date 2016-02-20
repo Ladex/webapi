@@ -8,7 +8,7 @@ namespace WebApi2Book.Web.Api.AutoMappingConfiguration
     {
         public void Configure(IMapperConfiguration mapperConfiguration)
         {
-            mapperConfiguration.CreateMap<Task, Models.Task>()
+            mapperConfiguration.CreateMap<Data.Entities.Task, Models.Task>()
                 .ForMember(opt => opt.Links, x => x.Ignore())
                 .ForMember(opt => opt.Assingnee, x => x.ResolveUsing<TaskAssigneeResolver>());
         }
